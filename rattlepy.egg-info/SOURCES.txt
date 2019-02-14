@@ -1,0 +1,10 @@
+MANIFEST.in
+README.md
+setup.py
+rattlepy/__init__.py
+rattlepy/__main__.py
+rattlepy/templating.py
+rattlepy.egg-info/PKG-INFO
+rattlepy.egg-info/SOURCES.txt
+rattlepy.egg-info/dependency_links.txt
+rattlepy.egg-info/top_level.txt

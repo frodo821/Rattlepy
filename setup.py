@@ -14,7 +14,7 @@ version = '0.0.1-alpha'
 setup(
     name="rattlepy",
     version=version,
-    url="https://github.com/frodo821/rattlepy",
+    url="https://github.com/frodo821/Rattlepy",
     author="frodo821 <Twitter: @BoufrawFrodo2>",
     author_email='1234567890.sakai.jp@gmail.com',
     maintainer="frodo821 <Twitter: @BoufrawFrodo2>",
@@ -29,5 +29,8 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'License :: OSI Approved :: MIT',
+        'Development Status :: 3 - Alpha',
+        'Topic :: Text Processing :: Markup :: HTML',
+        'Topic :: Text Processing :: Markup :: XML'
     ],
-    entry_points = "")
+    entry_points="")
