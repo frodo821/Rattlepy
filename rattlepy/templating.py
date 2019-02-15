@@ -26,17 +26,18 @@ class Element:
   A class of an HTML element which is able to have children.
 
   Usage:
-  ```
-  with Element(tagname, attributes...):
-    ...
-  ```
+  
+  .. code-block:: python
+    with Element(tagname, attributes...):
+      ...
+
   For class attribute, you can use "className" instead of using "class" directly.
   Or, also you can use the way:
 
-  ```
-  with Element(tagname, **{'class': 'my-class'}):
-    ...
-  ```
+  .. code-block:: python
+    with Element(tagname, **{'class': 'my-class'}):
+      ...
+
   Attributes which are invalid identifier in Python like `data-` are also available in the way.
   """
   def __init__(self, tag, *, className=None, **kwargs):
@@ -86,10 +87,12 @@ class SelfClosedElement:
   A class of an HTML element which is unable to have children like img or hr.
 
   Usage:
-  ```
-  with Element("hoge"):
-    SelfClosedElement(tagname, attributes...)
-  ```
+
+  .. code-block:: python
+
+    with Element("hoge"):
+      SelfClosedElement(tagname, attributes...)
+
   """
   def __init__(self, tag, *, _outer=2, className=None, **kwargs):
     self.tag = tag

@@ -7,10 +7,10 @@ Welcome to Rattle.py Documentation's documentation!
 ===================================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+  :maxdepth: 2
+  :caption: Contents:
 
-
+  Rattle.py API Reference </api_docs/index>
 
 Indices and tables
 ==================
@@ -18,3 +18,4 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+* :doc:`Rattle.py API Reference </api_docs/index>`

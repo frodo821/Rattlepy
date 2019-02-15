@@ -1,9 +1,11 @@
-""" Rattle.py - A Pure Python Templating Library for HTML
-A pure python templating library for html.
-Rattle.py has no special notation like Django or Jinja.
+Rattle.py - A Pure Python Templating Library for HTML
+=====================================================
+
+Rattle.py is a pure python templating library for html.
+And this library has no special notation like Django or Jinja.
 For example:
 
-.. code-block :: html
+.. code-block:: HTML
 
   <html>
       <head>
@@ -16,7 +18,7 @@ For example:
 
 The above HTML equals to below Python code with rattle.py:
 
-.. code-block :: python
+.. code-block:: python
 
   greeting = "Hello, PTL!"
   with html() as html:
@@ -32,7 +34,7 @@ The above HTML equals to below Python code with rattle.py:
 
 And then, you can also make reusable components by yourself:
 
-.. code-block :: python
+.. code-block:: python
 
   def greet(name):
     with node("div", className="greet-wrapper") as component:
@@ -46,20 +48,3 @@ And then, you can also make reusable components by yourself:
   with greet("User"): pass
 
 Enjoy!
-"""
-
-from .templating import (
-  escapeHtmlEntities, Element,
-  SelfClosedElement, text, node,
-  closed)
-
-from .elements import (
-  a, article, body,
-  div, footer, h1, h2,
-  h3, h4, h5, h6, head,
-  header, hr, html, img,
-  li, link, main, meta,
-  ol, p, script, span,
-  style, title, ul, setTitle)
-
-from .utils import createHeader
