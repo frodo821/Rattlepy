@@ -1,0 +1,13 @@
+version 0.0.2a3 in 2019/02/15
+  * Fixed setup.py
+
+version 0.0.2a2 in 2019/02/15
+  * Update docstrings and create document.
+
+version 0.0.2a1 in 2019/02/15
+  * Bug fix
+    meta and link function is not working.
+  * Added createHeader function
+
+version 0.0.1a1 in 2019/02/14
+  * Initial release
