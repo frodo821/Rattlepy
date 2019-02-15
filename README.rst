@@ -1,5 +1,5 @@
-Rattle.py - A Pure Python Templating Library for HTML
-=====================================================
+Rattle.py - A Pure Python HTML Template Engine for HTML
+=======================================================
 
 .. image:: https://readthedocs.org/projects/rattlepy/badge/?version=latest
   :target: https://rattlepy.readthedocs.io/en/latest/?badge=latest
