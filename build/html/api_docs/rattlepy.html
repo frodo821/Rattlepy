@@ -1,0 +1,167 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>rattlepyモジュール : Rattle.py APIリファレンス &#8212; Rattle.py 0.0.2a1 ドキュメント</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="rattlepy.elementsモジュール : Rattle.py APIリファレンス" href="elements.html" />
+    <link rel="prev" title="Rattle.py APIリファレンス" href="index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="rattlepy-rattle-py-api">
+<h1>rattlepyモジュール : Rattle.py APIリファレンス<a class="headerlink" href="#rattlepy-rattle-py-api" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<ul class="simple">
+<li><strong>次のドキュメント:</strong> <a class="reference internal" href="elements.html"><span class="doc">Elements</span></a></li>
+</ul>
+<span class="target" id="module-rattlepy"></span><p>Rattle.py - A Pure Python Templating Library for HTML
+A pure python templating library for html.
+Rattle.py has no special notation like Django or Jinja.
+For example:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Hello, PTL!<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;heading&quot;</span><span class="p">&gt;</span>Hello, PTL!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>The above HTML equals to below Python code with rattle.py:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Hello, PTL!&quot;</span>
+<span class="k">with</span> <span class="n">html</span><span class="p">()</span> <span class="k">as</span> <span class="n">html</span><span class="p">:</span>
+  <span class="k">with</span> <span class="n">head</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">title</span><span class="p">():</span>
+      <span class="n">text</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
+  <span class="k">with</span> <span class="n">body</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">node</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">,</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;heading&quot;</span><span class="p">):</span>
+      <span class="n">text</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
+
+<span class="c1"># show as HTML</span>
+<span class="k">print</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And then, you can also make reusable components by yourself:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+  <span class="k">with</span> <span class="n">node</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">,</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;greet-wrapper&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">component</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">node</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">):</span>
+      <span class="n">text</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Hello, {name}=san&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">node</span><span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">,</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;ok-btn&quot;</span><span class="p">):</span>
+      <span class="n">text</span><span class="p">(</span><span class="s2">&quot;ok!&quot;</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">component</span>
+
+<span class="c1"># and using:</span>
+<span class="k">with</span> <span class="n">greet</span><span class="p">(</span><span class="s2">&quot;User&quot;</span><span class="p">):</span> <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Enjoy!</p>
+<ul class="simple">
+<li><strong>次のドキュメント:</strong> <a class="reference internal" href="elements.html"><span class="doc">Elements</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Rattle.py</a></h1>
+
+
+
+
+
+
+
+
+<h3>ナビゲーション</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">rattlepyモジュール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">rattlepy.elementsモジュール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templating.html">rattlepy.templatingモジュール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">rattlepy.utilsモジュール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Rattle.py APIリファレンス</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Rattle.py APIリファレンス</a><ul>
+      <li>Previous: <a href="index.html" title="前の章へ">Rattle.py APIリファレンス</a></li>
+      <li>Next: <a href="elements.html" title="次の章へ">rattlepy.elementsモジュール : Rattle.py APIリファレンス</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Frodo821.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api_docs/rattlepy.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
