@@ -3,14 +3,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Rattle.py Documentation's documentation!
-===================================================
+Rattle.pyのドキュメントへようこそ！
+=====================================================
 
 .. toctree::
   :maxdepth: 2
   :caption: Contents:
 
-  Rattle.py API Reference </api_docs/index>
+  Rattle.py APIリファレンス </api_docs/index>
 
 Indices and tables
 ==================
@@ -18,4 +18,4 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-* :doc:`Rattle.py API Reference </api_docs/index>`
+* :doc:`Rattle.py APIリファレンス </api_docs/index>`

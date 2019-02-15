@@ -1,10 +1,10 @@
-Module rattlepy.elements : Rattle.py API Reference
-==================================================
+rattlepy.elementsモジュール : Rattle.py APIリファレンス
+========================================================
 
-* **Next document:** :doc:`Utils </api_docs/utils>`
-* **Previous document:** :doc:`Rattlepy </api_docs/rattlepy>`
+* **次のドキュメント:** :doc:`Utils </api_docs/utils>`
+* **前のドキュメント:** :doc:`Rattlepy </api_docs/rattlepy>`
 
 .. automodule:: rattlepy.elements
 
-* **Next document:** :doc:`Utils </api_docs/utils>`
-* **Previous document:** :doc:`Rattlepy </api_docs/rattlepy>`
+* **次のドキュメント:** :doc:`Utils </api_docs/utils>`
+* **前のドキュメント:** :doc:`Rattlepy </api_docs/rattlepy>`

@@ -1,8 +1,8 @@
-Module rattlepy.templating : Rattle.py API Reference
-====================================================
+rattlepy.templatingモジュール : Rattle.py APIリファレンス
+==========================================================
 
-* **Previous document:** :doc:`Templating </api_docs/templating>`
+* **前のドキュメント:** :doc:`Templating </api_docs/templating>`
 
 .. automodule:: rattlepy.templating
 
-* **Previous document:** :doc:`Templating </api_docs/templating>`
+* **前のドキュメント:** :doc:`Templating </api_docs/templating>`

@@ -1,17 +1,17 @@
 .. toctree::
   :maxdepth: 2
-  :caption: API Reference Index:
+  :caption: APIリファレンス目次:
   
-  Module rattlepy : Rattle.py API Reference </api_docs/rattlepy>
-  Module rattlepy.elements : Rattle.py API Reference </api_docs/elements>
-  Module rattlepy.templating : Rattle.py API Reference </api_docs/templating>
-  Module rattlepy.utils : Rattle.py API Reference </api_docs/utils>
+  rattlepyモジュール : Rattle.py APIリファレンス </api_docs/rattlepy>
+  rattlepy.elementsモジュール : Rattle.py APIリファレンス </api_docs/elements>
+  rattlepy.templatingモジュール : Rattle.py APIリファレンス </api_docs/templating>
+  rattlepy.utilsモジュール : Rattle.py APIリファレンス </api_docs/utils>
 
-Rattle.py API Reference
-=======================
+Rattle.py APIリファレンス
+============================================
 
 Modules:
-  * :doc:`Module rattlepy : Rattle.py API Reference <./rattlepy>`
-  * :doc:`Module rattlepy.elements : Rattle.py API Reference <./elements>`
-  * :doc:`Module rattlepy.templating : Rattle.py API Reference <./templating>`
-  * :doc:`Module rattlepy.utils : Rattle.py API Reference <./utils>`
+  * :doc:`rattlepyモジュール : Rattle.py APIリファレンス <./rattlepy>`
+  * :doc:`rattlepy.elementsモジュール : Rattle.py APIリファレンス <./elements>`
+  * :doc:`rattlepy.templatingモジュール : Rattle.py APIリファレンス <./templating>`
+  * :doc:`rattlepy.utilsモジュール : Rattle.py APIリファレンス <./utils>`

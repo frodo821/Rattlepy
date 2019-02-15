@@ -1,8 +1,8 @@
-Module rattlepy : Rattle.py API Reference
-=========================================
+rattlepyモジュール : Rattle.py APIリファレンス
+===============================================
 
-* **Next document:** :doc:`Elements </api_docs/elements>`
+* **次のドキュメント:** :doc:`Elements </api_docs/elements>`
 
 .. automodule:: rattlepy
 
-* **Next document:** :doc:`Elements </api_docs/elements>`
+* **次のドキュメント:** :doc:`Elements </api_docs/elements>`

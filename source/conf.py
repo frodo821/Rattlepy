@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Rattle.py Documentation'
+project = 'Rattle.py'
 copyright = '2019, Frodo821'
 author = 'Frodo821'
 
@@ -59,7 +59,7 @@ master_doc = 'index'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'ja'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -102,7 +102,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'RattlepyDocumentationdoc'
+htmlhelp_basename = 'Rattlepydoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -129,7 +129,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'RattlepyDocumentation.tex', 'Rattle.py Documentation Documentation',
+    (master_doc, 'Rattlepy.tex', 'Rattle.py Documentation',
      'Frodo821', 'manual'),
 ]
 
@@ -139,7 +139,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'rattlepydocumentation', 'Rattle.py Documentation Documentation',
+    (master_doc, 'rattlepy', 'Rattle.py Documentation',
      [author], 1)
 ]
 
@@ -150,8 +150,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'RattlepyDocumentation', 'Rattle.py Documentation Documentation',
-     author, 'RattlepyDocumentation', 'One line description of project.',
+    (master_doc, '  Rattlepy', 'Rattle.py Documentation',
+     author, '  Rattlepy', 'One line description of project.',
      'Miscellaneous'),
 ]
 
