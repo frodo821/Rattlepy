@@ -1,6 +1,10 @@
 Rattle.py - A Pure Python Templating Library for HTML
 =====================================================
 
+.. image:: https://readthedocs.org/projects/rattlepy/badge/?version=latest
+:target: https://rattlepy.readthedocs.io/en/latest/?badge=latest
+:alt: Documentation Status
+
 Rattle.py is a pure python templating library for html.
 And this library has no special notation like Django or Jinja.
 For example:
