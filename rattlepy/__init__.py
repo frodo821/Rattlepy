@@ -3,45 +3,48 @@ A pure python templating library for html.
 Rattle.py has no special notation like Django or Jinja.
 For example:
 
-```
-<html>
-    <head>
-        <title>Hello, PTL!</title>
-    </head>
-    <body>
-        <h1 class="heading">Hello, PTL!</h1>
-    </body>
-</html>
-```
+.. code-block :: html
+
+  <html>
+      <head>
+          <title>Hello, PTL!</title>
+      </head>
+      <body>
+          <h1 class="heading">Hello, PTL!</h1>
+      </body>
+  </html>
+
 The above HTML equals to below Python code with rattle.py:
 
-```
-greeting = "Hello, PTL!"
-with html() as html:
-  with head():
-    with title():
-      text(greeting)
-  with body():
-    with node("h1", className="heading"):
-      text(greeting)
+.. code-block :: python
 
-# show as HTML
-print(html)
-```
+  greeting = "Hello, PTL!"
+  with html() as html:
+    with head():
+      with title():
+        text(greeting)
+    with body():
+      with node("h1", className="heading"):
+        text(greeting)
+
+  # show as HTML
+  print(html)
+
 And then, you can also make reusable components by yourself:
 
-```
-def greet(name):
-  with node("div", className="greet-wrapper") as component:
-    with node("h1"):
-      text(f"Hello, {name}=san")
-    with node("button", className="ok-btn"):
-      text("ok!")
-  return component
+.. code-block :: python
 
-# and using:
-with greet("User"): pass
-```
+  def greet(name):
+    with node("div", className="greet-wrapper") as component:
+      with node("h1"):
+        text(f"Hello, {name}=san")
+      with node("button", className="ok-btn"):
+        text("ok!")
+    return component
+
+  # and using:
+  with greet("User"): pass
+
 Enjoy!
 """
 
