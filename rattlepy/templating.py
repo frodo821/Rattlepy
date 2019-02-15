@@ -26,8 +26,9 @@ class Element:
   A class of an HTML element which is able to have children.
 
   Usage:
-  
+
   .. code-block:: python
+
     with Element(tagname, attributes...):
       ...
 
@@ -35,6 +36,7 @@ class Element:
   Or, also you can use the way:
 
   .. code-block:: python
+
     with Element(tagname, **{'class': 'my-class'}):
       ...
 
@@ -129,14 +131,15 @@ def text(content):
 
   Multiline contents are available in the way:
 
-  ```
-  with Element("hoge"):
-    text('''\
-    |some
-    |multiline
-    |text''')
-  ```
-  Any characters before `|` are ignored as spacers.
+  .. code-block:: python
+
+      with Element("hoge"):
+        text('''\\
+        |some
+        |multiline
+        |text''')
+
+  Any characters before :code:`|` are ignored as spacers.
   If ending position of line spacers is not specified, all texts are inserted as text nodes.
   """
   local = frame(1).f_locals
@@ -153,13 +156,13 @@ def text(content):
 def node(tag, **kwargs):
   """
   Create Element and return it.
-  Equivalent to `Element(tag, attributes...)`.
+  Equivalent to :code:`Element(tag, attributes...)`.
   """
   return Element(tag, **kwargs)
 
 def closed(tag, **kwargs):
   """
   Create SelfClosedElement and return it.
-  Equivalent to `SelfClosedElement(tag, attributes...)`.
+  Equivalent to :code:`SelfClosedElement(tag, attributes...)`.
   """
   return SelfClosedElement(tag, _outer=3, **kwargs)
