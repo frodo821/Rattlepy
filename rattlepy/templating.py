@@ -1,5 +1,5 @@
 """
-Templating class and functions.
+テンプレートエンジンのコアクラスと関数
 """
 
 from sys import _getframe as frame
@@ -11,7 +11,7 @@ __all__ = [
 
 def escapeHtmlEntities(string):
   """
-  Escapes certain characters.
+  特定の文字を置き換えます。
   """
   tbl = str.maketrans({
     '<': '&lt;',
@@ -23,24 +23,24 @@ def escapeHtmlEntities(string):
 
 class Element:
   """
-  A class of an HTML element which is able to have children.
+  子孫ノードを持てるHTMLエレメントのクラスです。
 
-  Usage:
+  使い方:
 
   .. code-block:: python
 
     with Element(tagname, attributes...):
       ...
 
-  For class attribute, you can use "className" instead of using "class" directly.
-  Or, also you can use the way:
+  class属性はclassと直接指定する代わりにclassNameを使ってください。
+  それか、以下のように指定する方法もあります。
 
   .. code-block:: python
 
     with Element(tagname, **{'class': 'my-class'}):
       ...
 
-  Attributes which are invalid identifier in Python like `data-` are also available in the way.
+  :code:`data-`のようなPythonの識別子として無効な属性は上のようにして指定してください。
   """
   def __init__(self, tag, *, className=None, **kwargs):
     self.tag = tag
@@ -86,9 +86,9 @@ class Element:
 
 class SelfClosedElement:
   """
-  A class of an HTML element which is unable to have children like img or hr.
+  子孫ノードを持たないHTMLエレメントのクラスです。
 
-  Usage:
+  使い方:
 
   .. code-block:: python
 
@@ -105,7 +105,9 @@ class SelfClosedElement:
 
   def addself(self, *, outer=1):
     """
-    Add self to certain parent node.
+    特定のノードに自分自身を子ノードとして追加します。
+    outer引数は使わないでください。
+    正しく追加されなくなります。
     """
     local = frame(outer).f_locals
     k = max([0]+[int(l[1:]) for l in local if str(l).startswith('$')])
@@ -126,10 +128,9 @@ class SelfClosedElement:
 
 def text(content):
   """
-  This function is create text nodes.
-  A string is expected for content argument.
+  テキストノードを作成します。contentには文字列を指定してください。
 
-  Multiline contents are available in the way:
+  複数行にわたる内容は次のように指定してください。
 
   .. code-block:: python
 
@@ -139,8 +140,8 @@ def text(content):
         |multiline
         |text''')
 
-  Any characters before :code:`|` are ignored as spacers.
-  If ending position of line spacers is not specified, all texts are inserted as text nodes.
+  :code:`|`より前の文字はスペーサーとして無視されます。
+  スペーサーの終了位置が指定されなかった場合、前の空白も含めてすべての内容がテキストノードとして追加されます。
   """
   local = frame(1).f_locals
   k = max([0]+[int(l[1:]) for l in local if str(l).startswith('$')])
@@ -155,14 +156,14 @@ def text(content):
 
 def node(tag, **kwargs):
   """
-  Create Element and return it.
-  Equivalent to :code:`Element(tag, attributes...)`.
+  Elementを作成します。
+  :code:`Element(tag, attributes...)`と同じです。
   """
   return Element(tag, **kwargs)
 
 def closed(tag, **kwargs):
   """
-  Create SelfClosedElement and return it.
-  Equivalent to :code:`SelfClosedElement(tag, attributes...)`.
+  SelfClosedElementを作成します。
+  :code:`SelfClosedElement(tag, attributes...)`と同じです。
   """
   return SelfClosedElement(tag, _outer=3, **kwargs)
