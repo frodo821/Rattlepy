@@ -46,10 +46,17 @@ Enjoy!
 """
 
 from .templating import (
-    escapeHtmlEntities, Element,
-    SelfClosedElement, text, node,
-    closed, html, head, body, a,
-    span, main, header, footer,
-    article, ul, ol, li, h1, h2,
-    h3, h4, h5, h6, title,
-    script, style)
+  escapeHtmlEntities, Element,
+  SelfClosedElement, text, node,
+  closed)
+
+from .elements import (
+  a, article, body,
+  div, footer, h1, h2,
+  h3, h4, h5, h6, head,
+  header, hr, html, img,
+  li, link, main, meta,
+  ol, p, script, span,
+  style, title, ul, setTitle)
+
+from .utils import createHeader
