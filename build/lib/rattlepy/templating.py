@@ -1,3 +1,4 @@
+#pylint: disable=no-member, missing-docstring, unused-argument
 """
 Templating class and functions.
 """
@@ -7,7 +8,38 @@ from sys import _getframe as frame
 __all__ = [
   "escapeHtmlEntities", "Element",
   "SelfClosedElement", "text",
-  "node", "closed"]
+  "node", "closed", "formatters"]
+
+class LOCALSPACE:
+  def human_friendly(self):
+    c = '\n'.join(map(
+      lambda x: x.serialize('human_friendly') if isinstance(x, AbstractElement) else str(x),
+      self.children)).replace("\n", "\n  ")
+    if c:
+      c = f"\n  {c}\n"
+    attrs = ' '.join(map(
+      lambda x: (f'{x[0]}="{escapeHtmlEntities(x[1])}"' if x[1] is not None else str(x[0])),
+      self.attributes.items()))
+    if attrs:
+      attrs = f" {attrs}"
+    return f"<{self.tag}{attrs}>{c}</{self.tag}>"
+
+  def minify(self):
+    c = ''.join(map(
+      lambda x: x.serialize('minify') if isinstance(x, AbstractElement) else str(x),
+      self.children))
+    attrs = ' '.join(map(
+      lambda x: (f'{x[0]}="{escapeHtmlEntities(x[1])}"' if x[1] is not None else str(x[0])),
+      self.attributes.items()))
+    if attrs:
+      attrs = f" {attrs}"
+    return f"<{self.tag}{attrs}>{c}</{self.tag}>"
+
+  formatters = locals()
+
+formatters = LOCALSPACE.formatters
+
+del LOCALSPACE
 
 def escapeHtmlEntities(string):
   """
@@ -21,7 +53,14 @@ def escapeHtmlEntities(string):
   })
   return string.translate(tbl)
 
-class Element:
+class AbstractElement:
+  """
+  The most basis of all HTML elements.
+  """
+  def serialize(self, formatter="human_friendly", force_add_doctype=False):
+    return str(self)
+
+class Element(AbstractElement):
   """
   A class of an HTML element which is able to have children.
 
@@ -73,18 +112,23 @@ class Element:
       attrs = f" {attrs}"
     return f"<{self.tag}{attrs}>...</{self.tag}>"
 
-  def __str__(self):
-    c = '\n'.join(map(str, self.children)).replace("\n", "\n  ")
-    if c:
-      c = f"\n  {c}\n"
-    attrs = ' '.join(map(
-      lambda x: (f'{x[0]}="{escapeHtmlEntities(x[1])}"' if x[1] is not None else str(x[0])),
-      self.attributes.items()))
-    if attrs:
-      attrs = f" {attrs}"
-    return f"<{self.tag}{attrs}>{c}</{self.tag}>"
+  def __str__(self, *, formatter="minify", force_add_doctype=False):
+    doctype = '<!doctype html>\n' if force_add_doctype or self.tag.lower() == 'html' else ''
+    serialized = formatters[formatter](self)
+    return f"{doctype}{serialized}"
 
-class SelfClosedElement:
+  def serialize(self, formatter="human_friendly", force_add_doctype=False):
+    """
+    Serializes HTML elements.
+    If you want to serialize to minified form, use :code:`str(elem)`.
+
+    formatter argument is one of ["human_friendly", "minify"]. default is "human_friendly"
+    force_add_doctype argument is set whether force add doctype declaration
+    even if the element is not a :code:`<html>`
+    """
+    return self.__str__(formatter=formatter, force_add_doctype=force_add_doctype)
+
+class SelfClosedElement(AbstractElement):
   """
   A class of an HTML element which is unable to have children like img or hr.
 
@@ -114,15 +158,15 @@ class SelfClosedElement:
       parent.children.append(self)
 
   def __repr__(self):
+    return str(self)
+
+  def __str__(self):
     attrs = ' '.join(map(
       lambda x: (f'{x[0]}="{escapeHtmlEntities(x[1])}"' if x[1] is not None else str(x[0])),
       self.attributes.items()))
     if attrs:
       attrs = f" {attrs}"
     return f"<{self.tag}{attrs}/>"
-
-  def __str__(self):
-    return repr(self)
 
 def text(content):
   """
@@ -141,17 +185,29 @@ def text(content):
 
   Any characters before :code:`|` are ignored as spacers.
   If ending position of line spacers is not specified, all texts are inserted as text nodes.
+
+  All dangerous characters (:code:`& < > "`) will be escaped.
+  If you don't need the feature, Use :code:`rtext` instead of this.
   """
   local = frame(1).f_locals
   k = max([0]+[int(l[1:]) for l in local if str(l).startswith('$')])
   parent = local.get(f'${k}', None)
   if isinstance(parent, Element):
-    for l in content.splitlines():
-      l = l.split('|', 1)
-      if l[1:]:
-        parent.children.append(l[1])
-      else:
-        parent.children.append(l[0])
+    parent.children.append('\n'.join(
+      (lambda l: l[1] if l[1:] else l[0])(x.split('|', 1))
+      for x in escapeHtmlEntities(content).splitlines()))
+
+def rtext(content):
+  """
+  The behaviour of this function is like :code:`text`,
+  but this function won't escape dangerous characters.
+  """
+  local = frame(1).f_locals
+  k = max([0]+[int(l[1:]) for l in local if str(l).startswith('$')])
+  parent = local.get(f'${k}', None)
+  if isinstance(parent, Element):
+    parent.children.append(
+      '\n'.join((lambda l: l[1] if l[1:] else l[0])(x.split('|', 1)) for x in content.splitlines()))
 
 def node(tag, **kwargs):
   """
