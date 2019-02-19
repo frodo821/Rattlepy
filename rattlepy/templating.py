@@ -96,7 +96,37 @@ class Element(AbstractElement):
     if isinstance(parent, Element):
       parent.children.append(self)
     local[f'${k}'] = self
-    return self
+    return getattr(self, '.exposed-element', self)
+
+  def exposes(self, element):
+    """
+    Changes parent element dynamically.
+    This function aims creating custom component more easily.
+
+    Code example:
+
+    .. code-block:: python
+
+      with Element("hoge") as hoge:
+        # this element will be a child of hoge
+        with Element("some-inner") as inner:
+          hoge.exposes(inner)
+      
+      with hoge:
+        # this element will be a child of some-inner
+        with Element("other-element"):
+          ...
+        hoge.exposes(None)
+
+      with hoge:
+        # this element will be a child of hoge
+        with Element("some-other-element"):
+          ...
+    """
+    if isinstance(element, AbstractElement):
+      setattr(self, '.exposed-element', element)
+    else:
+      delattr(self, '.exposed-element')
 
   def __exit__(self, exc, ext, tb):
     local = frame(1).f_locals
