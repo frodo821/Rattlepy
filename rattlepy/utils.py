@@ -39,7 +39,8 @@ def createHeader(metas=None, title=None):
 
 def scaffold(header: Element):
   """
-  create html scaffold.
+  Create html scaffold.
+  This feature is under experimental.
   """
   with html() as elem:
     with header:
