@@ -1,4 +1,4 @@
-""" Setup Rattle.py """
+""""""
 from os.path import dirname, abspath
 from setuptools import setup, find_packages
 
@@ -9,7 +9,7 @@ except IOError:
   readme = ""
 
 here = dirname(abspath(__file__))
-version = '0.0.2a1'
+version = '0.0.3a1'
 
 setup(
   name="rattlepy",
@@ -19,7 +19,7 @@ setup(
   author_email='1234567890.sakai.jp@gmail.com',
   maintainer="frodo821 <Twitter: @BoufrawFrodo2>",
   maintainer_email='1234567890.sakai.jp@gmail.com',
-  description="A easy-to-use pure python HTML templating libary",
+  description="A easy-to-use pure python HTML template engine",
   long_description=readme,
   packages=find_packages(),
   install_requires=[],
@@ -33,4 +33,4 @@ setup(
     'Topic :: Text Processing :: Markup :: HTML',
     'Topic :: Text Processing :: Markup :: XML'
   ],
-  entry_points={})
+  entry_points="")

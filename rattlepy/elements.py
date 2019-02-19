@@ -15,163 +15,162 @@ __all__ = [
 
 def html(**kwargs):
   """
-  htmlノードを作成します。
-  :code:`return Element("html", attributes...)`と同じです。
+  Create html node and return it.
+  Equivalent to :code:`return Element("html", attributes...)`.
   """
   return Element("html", **kwargs)
 
 def head(**kwargs):
   """
-  headノードを作成します。
-  :code:`return Element("head", attributes...)`と同じです。
+  Create head node and return it.
+  Equivalent to :code:`return Element("head", attributes...)`.
   """
   return Element("head", **kwargs)
 
 def body(**kwargs):
   """
-  bodyノードを作成します。
-  :code:`return Element("body", attributes...)`と同じです。
+  Create body node and return it.
+  Equivalent to :code:`return Element("body", attributes...)`.
   """
   return Element("body", **kwargs)
 
 def div(**kwargs):
   """
-  divノードを作成します。
-  :code:`return Element("div", attributes...)`と同じです。
+  Create div node and return it.
+  Equivalent to :code:`return Element("div", attributes...)`.
   """
   return Element("div", **kwargs)
 
 def a(**kwargs):
   """
-  リンクを作成します。
-  :code:`return Element("a", attributes...)`と同じです。
+  Create hyper-link and return it.
+  Equivalent to :code:`return Element("a", attributes...)`.
   """
   return Element("a", **kwargs)
 
 def span(**kwargs):
   """
-  spanノードを作成します。
-  :code:`return Element("span", attributes...)`と同じです。
+  Create span node and return it.
+  Equivalent to :code:`return Element("span", attributes...)`.
   """
   return Element("span", **kwargs)
 
 def main(**kwargs):
   """
-  mainノードを作成します。
-  :code:`return Element("main", attributes...)`と同じです。
+  Create main node and return it.
+  Equivalent to :code:`return Element("main", attributes...)`.
   """
   return Element("main", **kwargs)
 
 def p(**kwargs):
   """
-  paragraphノードを作成します。
-  :code:`return Element("p", attributes...)`と同じです。
+  Create paragraph node and return it.
+  Equivalent to :code:`return Element("p", attributes...)`.
   """
   return Element("p", **kwargs)
 
 def footer(**kwargs):
   """
-  footerノードを作成します。
-  :code:`return Element("footer", attributes...)`と同じです。
+  Create footer node and return it.
+  Equivalent to :code:`return Element("footer", attributes...)`.
   """
   return Element("footer", **kwargs)
 
 def header(**kwargs):
   """
-  headerノードを作成します。
-  :code:`return Element("header", attributes...)`と同じです。
+  Create header node and return it.
+  Equivalent to :code:`return Element("header", attributes...)`.
   """
   return Element("header", **kwargs)
 
 def article(**kwargs):
   """
-  articleノードを作成します。
-  :code:`return Element("article", attributes...)`と同じです。
+  Create article node and return it.
+  Equivalent to :code:`return Element("article", attributes...)`.
   """
   return Element("article", **kwargs)
 
 def ul(**kwargs):
   """
-  ulノードを作成します。
-  :code:`return Element("ul", attributes...)`と同じです。
+  Create ul node and return it.
+  Equivalent to :code:`return Element("ul", attributes...)`.
   """
   return Element("ul", **kwargs)
 
 def ol(**kwargs):
   """
-  olノードを作成します。
-  :code:`return Element("ol", attributes...)`と同じです。
+  Create ol node and return it.
+  Equivalent to :code:`return Element("ol", attributes...)`.
   """
   return Element("ol", **kwargs)
 
 def li(**kwargs):
   """
-  liノードを作成します。
-  :code:`return Element("li", attributes...)`と同じです。
+  Create li node and return it.
+  Equivalent to :code:`return Element("li", attributes...)`.
   """
   return Element("li", **kwargs)
 
 def h1(**kwargs):
   """
-  h1ノードを作成します。
-  :code:`return Element("h1", attributes...)`と同じです。
+  Create h1 node and return it.
+  Equivalent to :code:`return Element("h1", attributes...)`.
   """
   return Element("h1", **kwargs)
 
 def h2(**kwargs):
   """
-  h2ノードを作成します。
-  :code:`return Element("h2", attributes...)`と同じです。
+  Create h2 node and return it.
+  Equivalent to :code:`return Element("h2", attributes...)`.
   """
   return Element("h2", **kwargs)
 
 def h3(**kwargs):
   """
-  h3ノードを作成します。
-  :code:`return Element("h3", attributes...)`と同じです。
+  Create h3 node and return it.
+  Equivalent to :code:`return Element("h3", attributes...)`.
   """
   return Element("h3", **kwargs)
 
 def h4(**kwargs):
   """
-  h4ノードを作成します。
-  :code:`return Element("h4", attributes...)`と同じです。
+  Create h4 node and return it.
+  Equivalent to :code:`return Element("h4", attributes...)`.
   """
   return Element("h4", **kwargs)
 
 def h5(**kwargs):
   """
-  h5ノードを作成します。
-  :code:`return Element("h5", attributes...)`と同じです。
+  Create h5 node and return it.
+  Equivalent to :code:`return Element("h5", attributes...)`.
   """
   return Element("h5", **kwargs)
 
 def h6(**kwargs):
   """
-  h6ノードを作成します。
-  :code:`return Element("h6", attributes...)`と同じです。
+  Create h6 node and return it.
+  Equivalent to :code:`return Element("h6", attributes...)`.
   """
   return Element("h6", **kwargs)
 
 def title(**kwargs):
   """
-  titleノードを作成します。
-  :code:`return Element("title", attributes...)`と同じです。
+  Create title node and return it.
+  Equivalent to :code:`return Element("title", attributes...)`.
   """
   return Element("title", **kwargs)
 
 def setTitle(string):
   """
-  ドキュメントのタイトルを設定します。
-  この関数は以下のコードと同等です：
+  Set the document title.
+  This function is as same as
 
   .. code-block:: python
 
     with title():
       text(string)
 
-  以下のように、with文と一緒に使う必要があります。
-  また、headセクション内で使用してください。
+  YOU MUST USE IN WITH EXPRESSION:
 
   .. code-block:: python
 
@@ -183,42 +182,42 @@ def setTitle(string):
 
 def script(**kwargs):
   """
-  scriptノードを作成します。
-  :code:`return Element("script", attributes...)`と同じです。
+  Create script node and return it.
+  Equivalent to :code:`return Element("script", attributes...)`.
   """
   return Element("script", **kwargs)
 
 def style(**kwargs):
   """
-  styleノードを作成します。
-  :code:`return Element("style", attributes...)`と同じです。
+  Create style node and return it.
+  Equivalent to :code:`return Element("style", attributes...)`.
   """
   return Element("style", **kwargs)
 
 def img(**kwargs):
   """
-  imgノードを作成します。
-  :code:`return Element("img", attributes...)`と同じです。
+  Create img node and return it.
+  Equivalent to :code:`return Element("img", attributes...)`.
   """
   return SelfClosedElement("img", _outer=3, **kwargs)
 
 def meta(**kwargs):
   """
-  metaノードを作成します。
-  :code:`return Element("meta", attributes...)`と同じです。
+  Create meta node and return it.
+  Equivalent to :code:`return Element("meta", attributes...)`.
   """
   return SelfClosedElement("meta", _outer=3, **kwargs)
 
 def link(**kwargs):
   """
-  linkノードを作成します。
-  :code:`return Element("link", attributes...)`と同じです。
+  Create link node and return it.
+  Equivalent to :code:`return Element("link", attributes...)`.
   """
   return SelfClosedElement("link", _outer=3, **kwargs)
 
 def hr(**kwargs):
   """
-  hrノードを作成します。
-  :code:`return Element("hr", attributes...)`と同じです。
+  Create hr node and return it.
+  Equivalent to :code:`return Element("hr", attributes...)`.
   """
   return SelfClosedElement("hr", _outer=3, **kwargs)
