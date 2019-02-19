@@ -126,7 +126,10 @@ class Element(AbstractElement):
     if isinstance(element, AbstractElement):
       setattr(self, '.exposed-element', element)
     else:
-      delattr(self, '.exposed-element')
+      try:
+        delattr(self, '.exposed-element')
+      except:
+        pass
 
   def __exit__(self, exc, ext, tb):
     local = frame(1).f_locals
