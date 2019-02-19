@@ -1,7 +1,7 @@
 """
 Basic usage of Rattle.py
 """
-from .templating import text
+from .templating import text, rtext
 from .elements import (
   html, body, link, style,
   h1, img, span)
@@ -14,11 +14,11 @@ with html(lang="ja") as elem:
 
     link(rel="stylesheet", href="main.css")
     with style():
-      text("""\
+      rtext("""\
       |a {
       |  color: blue;
-      |}\
-      """)
+      |}
+      |""")
 
   with body():
     with h1():
@@ -30,4 +30,7 @@ with html(lang="ja") as elem:
     with span(className="red large", id="abcd"):
       text("This text will be large and red.")
 
+print("minified output:\n")
 print(elem)
+print("\n\nhuman friendly output:\n")
+print(elem.serialize())
