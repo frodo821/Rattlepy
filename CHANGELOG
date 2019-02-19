@@ -1,3 +1,8 @@
+version 0.0.3a1 in 2019/02/19
+  * text function will escape dangerous characters.
+  * rtext function added.
+  * Now you can select HTML renderer.
+
 version 0.0.2a3 in 2019/02/15
   * Fixed setup.py
 
