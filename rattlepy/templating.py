@@ -1,4 +1,4 @@
-#pylint: disable=no-member, missing-docstring, unused-argument
+#pylint: disable=no-member, missing-docstring, unused-argument, bare-except
 """
 Templating class and functions.
 """
@@ -111,7 +111,7 @@ class Element(AbstractElement):
         # this element will be a child of hoge
         with Element("some-inner") as inner:
           hoge.exposes(inner)
-      
+
       with hoge:
         # this element will be a child of some-inner
         with Element("other-element"):

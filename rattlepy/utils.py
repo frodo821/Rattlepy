@@ -2,7 +2,9 @@
 Utility functions for making html more easily.
 """
 
+from .templating import Element
 from .elements import (
+  html, body,
   head, meta, setTitle)
 
 def createHeader(metas=None, title=None):
@@ -29,8 +31,19 @@ def createHeader(metas=None, title=None):
   metas = metas or []
 
   with head() as elem:
-    for m in metas:
+    for m in metas or []:
       meta(**m)
-    with setTitle(title):
+    with setTitle(title or ""):
       pass
+  return elem
+
+def scaffold(header: Element):
+  """
+  create html scaffold.
+  """
+  with html() as elem:
+    with header:
+      pass
+    with body() as b:
+      elem.exposes(b)
   return elem

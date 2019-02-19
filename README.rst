@@ -13,10 +13,10 @@ For example:
 
   <html>
       <head>
-          <title>Hello, PTL!</title>
+          <title>Hello, Rattle.py!</title>
       </head>
       <body>
-          <h1 class="heading">Hello, PTL!</h1>
+          <h1 class="heading">Hello, Rattle.py!</h1>
       </body>
   </html>
 
@@ -24,13 +24,13 @@ The above HTML equals to below Python code with rattle.py:
 
 .. code-block:: python
 
-  greeting = "Hello, PTL!"
+  greeting = "Hello, Rattle.py!"
   with html() as html:
     with head():
       with title():
         text(greeting)
     with body():
-      with node("h1", className="heading"):
+      with h1(className="heading"):
         text(greeting)
 
   # show as HTML
