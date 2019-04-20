@@ -1,6 +1,6 @@
 #pylint: disable=no-member, missing-docstring, unused-argument, bare-except
 """
-Templating class and functions.
+テンプレートクラスと関数
 """
 
 from sys import _getframe as frame
@@ -44,7 +44,7 @@ del LOCALSPACE
 
 def escapeHtmlEntities(string):
   """
-  Escapes certain characters.
+  特定の文字をエスケープする
   """
   tbl = str.maketrans({
     '<': '&lt;',
@@ -56,31 +56,31 @@ def escapeHtmlEntities(string):
 
 class AbstractElement:
   """
-  The most basis of all HTML elements.
+  すべてのHTML要素のスーパークラス
   """
   def serialize(self, formatter="human_friendly", force_add_doctype=False):
     return str(self)
 
 class Element(AbstractElement):
   """
-  A class of an HTML element which is able to have children.
+  子ノードを持つ要素のクラス
 
-  Usage:
+  使い方:
 
   .. code-block:: python
 
     with Element(tagname, attributes...):
       ...
 
-  For class attribute, you can use "className" instead of using "class" directly.
-  Or, also you can use the way:
+  クラス属性には"class"の代わりに"className"を使ってください。
+  または、こういう方法もあります：
 
   .. code-block:: python
 
     with Element(tagname, **{'class': 'my-class'}):
       ...
 
-  Attributes which are invalid identifier in Python like `data-` are also available in the way.
+  Pythonの"data-"のような識別子として無効な属性は、上記の方法を使って指定できます。
   """
   def __init__(self, tag, *, className=None, **kwargs):
     self.tag = tag
@@ -101,26 +101,26 @@ class Element(AbstractElement):
 
   def exposes(self, element=None):
     """
-    Changes parent element dynamically.
-    This function aims creating custom component more easily.
+    カスタムコンポーネントの作成を容易にするヘルパー関数です。
+    動的に親ノードを変更します。
 
-    Code example:
+    コード例:
 
     .. code-block:: python
 
       with Element("hoge") as hoge:
-        # this element will be a child of hoge
+        # この要素の親クラスは:code:`hoge`です。
         with Element("some-inner") as inner:
           hoge.exposes(inner)
 
       with hoge:
-        # this element will be a child of some-inner
+        # この要素の親クラスは:code:`some-inner`です。
         with Element("other-element"):
           ...
         hoge.exposes()
 
       with hoge:
-        # this element will be a child of hoge
+        # この要素の親クラスは:code:`hoge`です。
         with Element("some-other-element"):
           ...
     """
@@ -153,20 +153,19 @@ class Element(AbstractElement):
 
   def serialize(self, formatter="human_friendly", force_add_doctype=False):
     """
-    Serializes HTML elements.
-    If you want to serialize to minified form, use :code:`str(elem)`.
+    HTML要素をシリアライズします。
+    :code:`str(elem)`は圧縮されますが、圧縮せずに出力することも可能です。
 
-    formatter argument is one of ["human_friendly", "minify"]. default is "human_friendly"
-    force_add_doctype argument is set whether force add doctype declaration
-    even if the element is not a :code:`<html>`
+    formatter引数は["human_friendly", "minify"]のうちのどれかを指定してください。デフォルトは"human_friendly"です。
+    force_add_doctype引数にtrueを指定すると要素のタイプにかかわらず、doctype宣言を先頭に追加します。
     """
     return self.__str__(formatter=formatter, force_add_doctype=force_add_doctype)
 
 class SelfClosedElement(AbstractElement):
   """
-  A class of an HTML element which is unable to have children like img or hr.
+  子ノードを持たない要素のクラス
 
-  Usage:
+  使い方:
 
   .. code-block:: python
 
@@ -183,7 +182,15 @@ class SelfClosedElement(AbstractElement):
 
   def addself(self, *, outer=1):
     """
-    Add self to certain parent node.
+    特定の親ノードに自分自身を追加します。
+
+    使い方:
+
+    .. code-block:: python
+
+      with some_parent_node:
+        # これはsome_parent_nodeの子ノードになります。
+        SelfClosedElement('hr').addself()
     """
     local = frame(outer).f_locals
     k = max([0]+[int(l[1:]) for l in local if str(l).startswith('$')])
@@ -204,10 +211,11 @@ class SelfClosedElement(AbstractElement):
 
 def text(content):
   """
-  This function is create text nodes.
-  A string is expected for content argument.
+  テキストノードを作成して追加します。
 
-  Multiline contents are available in the way:
+  content引数の型はstrである必要があります。
+
+  複数行にわたる文字列は次のようにしてください:
 
   .. code-block:: python
 
@@ -217,11 +225,10 @@ def text(content):
         |multiline
         |text''')
 
-  Any characters before :code:`|` are ignored as spacers.
-  If ending position of line spacers is not specified, all texts are inserted as text nodes.
+  :code:`|`の前の文字列は無視されます。存在しない場合はその行のすべての文字が挿入されます。
 
-  All dangerous characters (:code:`& < > "`) will be escaped.
-  If you don't need the feature, Use :code:`rtext` instead of this.
+  :code:`&`のようなHTMLの特殊文字はエスケープされます。
+  エスケープなしで挿入したい場合は:code:`rtext`関数を代わりに使ってください。
   """
   local = frame(1).f_locals
   k = max([0]+[int(l[1:]) for l in local if str(l).startswith('$')])
@@ -233,8 +240,7 @@ def text(content):
 
 def rtext(content):
   """
-  The behaviour of this function is like :code:`text`,
-  but this function won't escape dangerous characters.
+  :code:`text`関数のような動作をしますが、文字列のエスケープを行いません。
   """
   local = frame(1).f_locals
   k = max([0]+[int(l[1:]) for l in local if str(l).startswith('$')])
@@ -245,14 +251,14 @@ def rtext(content):
 
 def node(tag, **kwargs):
   """
-  Create Element and return it.
-  Equivalent to :code:`Element(tag, attributes...)`.
+  要素を作成して返します。
+  :code:`Element(tag, attributes...)`と同じです。
   """
   return Element(tag, **kwargs)
 
 def closed(tag, **kwargs):
   """
-  Create SelfClosedElement and return it.
-  Equivalent to :code:`SelfClosedElement(tag, attributes...)`.
+  子ノードを持たない要素を作成して返します。
+  :code:`SelfClosedElement(tag, attributes...)`と同じです。
   """
   return SelfClosedElement(tag, _outer=3, **kwargs)
