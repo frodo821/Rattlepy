@@ -6,6 +6,7 @@
   Module rattlepy.elements </api_docs/elements>
   Module rattlepy.templating </api_docs/templating>
   Module rattlepy.utils </api_docs/utils>
+  Module rattlepy.environment </api_docs/environment>
 
 Rattle.py API Reference
 =======================
