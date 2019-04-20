@@ -108,18 +108,18 @@ class Element(AbstractElement):
     .. code-block:: python
 
       with Element("hoge") as hoge:
-        # この要素の親クラスは:code:`hoge`です。
+        # この要素の親クラスは :code:`hoge` です。
         with Element("some-inner") as inner:
           hoge.exposes(inner)
 
       with hoge:
-        # この要素の親クラスは:code:`some-inner`です。
+        # この要素の親クラスは :code:`some-inner` です。
         with Element("other-element"):
           ...
         hoge.exposes()
 
       with hoge:
-        # この要素の親クラスは:code:`hoge`です。
+        # この要素の親クラスは :code:`hoge` です。
         with Element("some-other-element"):
           ...
     """
@@ -153,7 +153,7 @@ class Element(AbstractElement):
   def serialize(self, formatter="human_friendly", force_add_doctype=False):
     """
     HTML要素をシリアライズします。
-    :code:`str(elem)`は圧縮されますが、圧縮せずに出力することも可能です。
+    :code:`str(elem)` は圧縮されますが、圧縮せずに出力することも可能です。
 
     formatter引数は["human_friendly", "minify"]のうちのどれかを指定してください。デフォルトは"human_friendly"です。
     force_add_doctype引数にtrueを指定すると要素のタイプにかかわらず、doctype宣言を先頭に追加します。
@@ -224,10 +224,10 @@ def text(content):
         |multiline
         |text''')
 
-  :code:`|`の前の文字列は無視されます。存在しない場合はその行のすべての文字が挿入されます。
+  :code:`|` の前の文字列は無視されます。存在しない場合はその行のすべての文字が挿入されます。
 
-  :code:`&`のようなHTMLの特殊文字はエスケープされます。
-  エスケープなしで挿入したい場合は:code:`rtext`関数を代わりに使ってください。
+  :code:`&` のようなHTMLの特殊文字はエスケープされます。
+  エスケープなしで挿入したい場合は :code:`rtext` 関数を代わりに使ってください。
   """
   local = frame(1).f_locals
   k = max([0]+[int(l[1:]) for l in local if str(l).startswith('$')])
@@ -239,7 +239,7 @@ def text(content):
 
 def rtext(content):
   """
-  :code:`text`関数のような動作をしますが、文字列のエスケープを行いません。
+  :code:`text` 関数のような動作をしますが、文字列のエスケープを行いません。
   """
   local = frame(1).f_locals
   k = max([0]+[int(l[1:]) for l in local if str(l).startswith('$')])
@@ -251,13 +251,13 @@ def rtext(content):
 def node(tag, **kwargs):
   """
   要素を作成して返します。
-  :code:`Element(tag, attributes...)`と同じです。
+  :code:`Element(tag, attributes...)` と同じです。
   """
   return Element(tag, **kwargs)
 
 def closed(tag, **kwargs):
   """
   子ノードを持たない要素を作成して返します。
-  :code:`SelfClosedElement(tag, attributes...)`と同じです。
+  :code:`SelfClosedElement(tag, attributes...)` と同じです。
   """
   return SelfClosedElement(tag, _outer=3, **kwargs)
