@@ -36,6 +36,7 @@ class LOCALSPACE:
     return f"<{self.tag}{attrs}>{c}</{self.tag}>"
 
   formatters = locals()
+  del formatters['formatters']
 
 formatters = LOCALSPACE.formatters
 
@@ -95,10 +96,10 @@ class Element(AbstractElement):
     parent = local.get(f'${k-1}', None)
     if isinstance(parent, Element):
       parent.children.append(self)
-    local[f'${k}'] = self
-    return getattr(self, '.exposed-element', self)
+    local[f'${k}'] = getattr(self, '.exposed-element', self)
+    return self
 
-  def exposes(self, element):
+  def exposes(self, element=None):
     """
     Changes parent element dynamically.
     This function aims creating custom component more easily.
@@ -116,7 +117,7 @@ class Element(AbstractElement):
         # this element will be a child of some-inner
         with Element("other-element"):
           ...
-        hoge.exposes(None)
+        hoge.exposes()
 
       with hoge:
         # this element will be a child of hoge

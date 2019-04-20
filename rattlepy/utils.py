@@ -7,7 +7,7 @@ from .elements import (
   html, body,
   head, meta, setTitle)
 
-def createHeader(metas=None, title=None):
+def createHeader(title, *metas):
   """
   Create head element.
   Usage:
@@ -15,8 +15,8 @@ def createHeader(metas=None, title=None):
   .. code-block:: python
 
     with createHeader(
-      [{"charset": "utf-8"}],
-      "Page Title"):
+      "Page Title",
+      {"charset": "utf-8"}):
         ...
 
   This function equals to the code:
@@ -28,12 +28,10 @@ def createHeader(metas=None, title=None):
         meta(**m)
       setTitle("Page Title")
   """
-  metas = metas or []
-
   with head() as elem:
-    for m in metas or []:
+    for m in metas:
       meta(**m)
-    with setTitle(title or ""):
+    with setTitle(title):
       pass
   return elem
 
