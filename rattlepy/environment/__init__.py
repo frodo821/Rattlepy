@@ -22,7 +22,7 @@ class Environment:
     with scaffold(createHeader("Page Title")) as html:
       with h1():
         # define a placeholder named 'title'
-        text(env.scalar('title'))
+        text(env.define('title'))
 
     env.title = 'Test Title'
     # or
