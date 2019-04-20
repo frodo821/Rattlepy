@@ -35,8 +35,7 @@ class LOCALSPACE:
       attrs = f" {attrs}"
     return f"<{self.tag}{attrs}>{c}</{self.tag}>"
 
-  formatters = locals()
-  del formatters['formatters']
+  formatters = locals().copy()
 
 formatters = LOCALSPACE.formatters
 

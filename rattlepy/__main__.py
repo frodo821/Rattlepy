@@ -9,8 +9,8 @@ from .utils import createHeader
 
 with html(lang="ja") as elem:
   with createHeader(
-    [{"name": "viewport", "content": "initial-scale=1.0,width=device-width"}],
-    "Hello, Rattle.py"):
+    "Hello, Rattle.py",
+    {"name": "viewport", "content": "initial-scale=1.0,width=device-width"}):
 
     link(rel="stylesheet", href="main.css")
     with style():
