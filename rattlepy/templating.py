@@ -4,6 +4,7 @@ Templating class and functions.
 """
 
 from sys import _getframe as frame
+from .environment.placeholder import Placeholder
 
 __all__ = [
   "escapeHtmlEntities", "Element",
@@ -51,7 +52,7 @@ def escapeHtmlEntities(string):
     '&': '&amp',
     '"': '&quot;'
   })
-  return string.translate(tbl)
+  return str(string).translate(tbl)
 
 class AbstractElement:
   """
@@ -226,9 +227,12 @@ def text(content):
   k = max([0]+[int(l[1:]) for l in local if str(l).startswith('$')])
   parent = local.get(f'${k}', None)
   if isinstance(parent, Element):
-    parent.children.append('\n'.join(
-      (lambda l: l[1] if l[1:] else l[0])(x.split('|', 1))
-      for x in escapeHtmlEntities(content).splitlines()))
+    if isinstance(content, str):
+      parent.children.append('\n'.join(
+        (lambda l: l[1] if l[1:] else l[0])(x.split('|', 1))
+        for x in escapeHtmlEntities(content).splitlines()))
+    else:
+      parent.children.append(content)
 
 def rtext(content):
   """
