@@ -1,18 +1,26 @@
+version 0.0.4a1 in 2019/04/20
+  * changed: createHeader function argument.
+  * fixed: scaffold function
+  * fixed: exposes function on Element object.
+  * fixed: element formatters recursive reference bug.
+
+version 0.0.3a2 in 2019/02/19
+  * fixed: many known bugs.
+
 version 0.0.3a1 in 2019/02/19
-  * text function will escape dangerous characters.
-  * rtext function added.
-  * Now you can select HTML renderer.
+  * changed: text function will escape dangerous characters.
+  * added: rtext function.
+  * changed: now you can select HTML renderer.
 
 version 0.0.2a3 in 2019/02/15
-  * Fixed setup.py
+  * fixed: setup.py
 
 version 0.0.2a2 in 2019/02/15
-  * Update docstrings and create document.
+  * others: update docstrings and create document.
 
 version 0.0.2a1 in 2019/02/15
-  * Bug fix
-    meta and link function is not working.
-  * Added createHeader function
+  * fixed: meta and link function is not working.
+  * added: createHeader function
 
 version 0.0.1a1 in 2019/02/14
   * Initial release

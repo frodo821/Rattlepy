@@ -9,7 +9,7 @@ except IOError:
   readme = ""
 
 here = dirname(abspath(__file__))
-version = '0.0.3a1'
+version = '0.0.4a1'
 
 setup(
   name="rattlepy",

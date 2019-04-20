@@ -1,6 +1,6 @@
 Metadata-Version: 1.2
 Name: rattlepy
-Version: 0.0.3a1
+Version: 0.0.3a2
 Summary: A easy-to-use pure python HTML template engine
 Home-page: https://github.com/frodo821/Rattlepy
 Author: frodo821 <Twitter: @BoufrawFrodo2>
@@ -23,10 +23,10 @@ Description: Rattle.py - A Pure Python HTML Template Engine for HTML
         
           <html>
               <head>
-                  <title>Hello, PTL!</title>
+                  <title>Hello, Rattle.py!</title>
               </head>
               <body>
-                  <h1 class="heading">Hello, PTL!</h1>
+                  <h1 class="heading">Hello, Rattle.py!</h1>
               </body>
           </html>
         
@@ -34,13 +34,13 @@ Description: Rattle.py - A Pure Python HTML Template Engine for HTML
         
         .. code-block:: python
         
-          greeting = "Hello, PTL!"
+          greeting = "Hello, Rattle.py!"
           with html() as html:
             with head():
               with title():
                 text(greeting)
             with body():
-              with node("h1", className="heading"):
+              with h1(className="heading"):
                 text(greeting)
         
           # show as HTML
