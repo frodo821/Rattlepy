@@ -1,6 +1,9 @@
+version 0.0.5a1 in 2019/04/20
+  * added: HTML node placeholdering.
+
 version 0.0.4a1 in 2019/04/20
   * changed: createHeader function argument.
-  * fixed: scaffold function
+  * fixed: scaffold function.
   * fixed: exposes function on Element object.
   * fixed: element formatters recursive reference bug.
 

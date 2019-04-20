@@ -12,3 +12,5 @@ rattlepy.egg-info/PKG-INFO
 rattlepy.egg-info/SOURCES.txt
 rattlepy.egg-info/dependency_links.txt
 rattlepy.egg-info/top_level.txt
+rattlepy/environment/__init__.py
+rattlepy/environment/placeholder.py
