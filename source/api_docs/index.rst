@@ -1,11 +1,12 @@
 .. toctree::
   :maxdepth: 2
   :caption: Rattle.py APIリファレンス目次:
-  
+
   rattlepyモジュール </api_docs/rattlepy>
   rattlepy.elementsモジュール </api_docs/elements>
   rattlepy.templatingモジュール </api_docs/templating>
   rattlepy.utilsモジュール </api_docs/utils>
+  rattlepy.environmentモジュール </api_docs/environment>
 
 Rattle.py APIリファレンス
 ============================================
@@ -15,3 +16,4 @@ Modules:
   * :doc:`rattlepy.elementsモジュール <./elements>`
   * :doc:`rattlepy.templatingモジュール <./templating>`
   * :doc:`rattlepy.utilsモジュール <./utils>`
+  * :doc:`rattlepy.utilsモジュール <./environment>`
