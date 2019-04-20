@@ -16,3 +16,4 @@ Modules:
   * :doc:`Module rattlepy.elements <./elements>`
   * :doc:`Module rattlepy.templating <./templating>`
   * :doc:`Module rattlepy.utils <./utils>`
+  * :doc:`Module rattlepy.environment <./environment>`
