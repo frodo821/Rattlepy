@@ -5,7 +5,7 @@ HTML element short-handing functions
 from .templating import Element, SelfClosedElement, text
 
 __all__ = [
-  'a', 'article', 'body', 'div',
+  'a', 'article', 'body', 'button', 'div',
   'footer', 'h1', 'h2', 'h3',
   'h4', 'h5', 'h6', 'head', 'header',
   'hr', 'html', 'img', 'li', 'link',
@@ -33,6 +33,13 @@ def body(**kwargs):
   Equivalent to :code:`return Element("body", attributes...)`.
   """
   return Element("body", **kwargs)
+
+def button(**kwargs):
+  """
+  Create button node and return it.
+  Equivalent to :code:`return Element("button", attributes...)`.
+  """
+  return Element("button", **kwargs)
 
 def div(**kwargs):
   """

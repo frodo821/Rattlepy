@@ -72,7 +72,7 @@ class Element(AbstractElement):
     with Element(tagname, attributes...):
       ...
 
-  For class attribute, you can use "className" instead of using "class" directly.
+  For class attribute, you can use "className" instead of "class" and "htmlFor" instead of "for"
   Or, also you can use the way:
 
   .. code-block:: python
@@ -82,11 +82,13 @@ class Element(AbstractElement):
 
   Attributes which are invalid identifier in Python like `data-` are also available in the way.
   """
-  def __init__(self, tag, *, className=None, **kwargs):
+  def __init__(self, tag, *, className=None, htmlFor=None, **kwargs):
     self.tag = tag
     self.attributes = kwargs
     if className:
       self.attributes["class"] = className
+    if htmlFor:
+      self.attributes["for"] = htmlFor
     self.children = []
 
   def __enter__(self):

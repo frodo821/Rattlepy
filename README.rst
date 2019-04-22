@@ -1,11 +1,11 @@
-Rattle.py - A Pure Python HTML Template Engine for HTML
-=======================================================
+Rattle.py - An Pure Python HTML Template Engine for HTML
+========================================================
 
 .. image:: https://readthedocs.org/projects/rattlepy/badge/?version=latest
   :target: https://rattlepy.readthedocs.io/en/latest/?badge=latest
   :alt: Documentation Status
 
-Rattle.py is a pure python templating library for html.
+Rattle.py is a pure python html/xml template engine.
 And this library has no special notation like Django or Jinja.
 For example:
 
@@ -41,10 +41,10 @@ And then, you can also make reusable components by yourself:
 .. code-block:: python
 
   def greet(name):
-    with node("div", className="greet-wrapper") as component:
-      with node("h1"):
+    with div(className="greet-wrapper") as component:
+      with h1():
         text(f"Hello, {name}=san")
-      with node("button", className="ok-btn"):
+      with button(className="ok-btn"):
         text("ok!")
     return component
 

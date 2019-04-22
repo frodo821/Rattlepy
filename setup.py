@@ -19,7 +19,7 @@ setup(
   author_email='1234567890.sakai.jp@gmail.com',
   maintainer="frodo821 <Twitter: @BoufrawFrodo2>",
   maintainer_email='1234567890.sakai.jp@gmail.com',
-  description="A easy-to-use pure python HTML template engine",
+  description="An easy-to-use pure python HTML template engine",
   long_description=readme,
   packages=find_packages(),
   install_requires=[],
